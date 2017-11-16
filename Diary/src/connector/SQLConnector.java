@@ -16,13 +16,22 @@ public class SQLConnector {
     
     public SQLConnector () {
 	try {
-	    connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/diary?verifyServerCertificate=false" +
+	    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/diary?verifyServerCertificate=false" +
 						     "&useSSL=true","diarytest","test");
 	} catch (Exception e) {
 	    System.out.print("Error" + e);
-	}
+	    }
     } // SQLConnector
     
-    
+    public int AddEntry(DiaryEntry entry) {
+        String query = "INSERT INTO diary(post_date, author, title, entry) VALUES ('" + entry.getPostDate() + "',"
+                + "'"+ entry.getAuthor() +"', '"+ entry.getTitle() +"', '"+entry.getEntryText()+"');";
+        try {
+            Statement s = connection.createStatement();
+            check = s.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 } // Class SQLConnector

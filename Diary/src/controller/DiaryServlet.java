@@ -1,6 +1,6 @@
 /**
  * This is a servlet for the Project Diary. 
- */
+ **/
 
 package controller;
 
@@ -29,7 +29,15 @@ import object.DiaryEntry;
  */
 
 @WebServlet("/DiaryServlet")
-    public class DiaryServlet extends HttpServlet {
+public class DiaryServlet extends HttpServlet {
 
+    public DiaryServlet() {
+        super();
+    }
 
-    } // 
+    public init(ServletConfig config) throws ServletException {
+        super.init(config);
+        process = new TemplateProcessor(templateDir, getServletContext());
+    }
+
+} // DiaryServlet
