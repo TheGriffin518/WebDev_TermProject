@@ -16,7 +16,7 @@
          conn = new SQLConnector();
      }
 
-     public addEntry(DiaryEntry entry) {
+     public void addEntry(DiaryEntry entry) {
          return conn.addEntry();
      }
  }

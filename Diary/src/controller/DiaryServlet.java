@@ -21,23 +21,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logiclayer.LogicConnector;
-import object.DiaryEntry;
-
+//import connector.SQLConnector;
+//import controller.LogicConnector;
+//import object.DiaryEntry;
 /**
  * Servlet implementation for class DiaryServlet.
  */
 
-@WebServlet("/DiaryServlet")
 public class DiaryServlet extends HttpServlet {
 
     public DiaryServlet() {
         super();
     }
 
-    public init(ServletConfig config) throws ServletException {
-        super.init(config);
-        process = new TemplateProcessor(templateDir, getServletContext());
+    public void init(ServletConfig config) throws ServletException {
+	
     }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	doPost(request, response);
+    } // doGet
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+    } // doPost
 
 } // DiaryServlet

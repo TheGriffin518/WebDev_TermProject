@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<project name="Project_Diary"  default="compile" basedir=".">
+   <description>
+       A diary showing progression the team made.
+   </description>
+   <property name="src" location="src"/>
+   <property name="build" location="build"/>
+   <property name="dist" location="dist"/>
+   <property name="WebInf" location="WebContent/WEB-INF"/>
+
+   <path id="compile.classpath">
+     <!-- Creates a path of all of the jar files needed to compile.-->
+     <fileset dir="WebContent/WEB-INF/lib">
+       <include name="*.jar"/>
+     </fileset>
+   </path>
+   
+   <target name="init">
+     <mkdir dir="${build}/classes"/>
+     <mkdir dir="${dist}"/>
+     <mkdir dir="${WebInf}/classes"/>
+   </target>
+   
+   <target name="compile" depends="init">
+      <javac includeantruntime="false" srcdir="src" destdir="${build}/classes"/>
+      <copy todir="WebContent/WEB-INF/classes">
+	<fileset dir="${build}/classes"/>
+      </copy>
+   </target>
+
+   <target name="dist" depends="compile"
+	   description="generate the distribution">
+     <mkdir dir="${dist}/lib"/>
+     <jar jarfile="${dist}/lib/Diary.jar" basedir="${build}/classes"/>
+   </target>
+
+   <target name="war" depends="compile">
+     <war destfile="${dist}/Diary.war" webxml="WebContent/WEB-INF/web.xml">
+       <fileset dire="WebContent"/>
+       <lib dir="WebContent/WEB-INF/lib"/>
+       <classes dir="${build}/classes"/>
+     </war>
+   </target>
+   
+   <target name="clean" 
+	   description="clean up">
+     <delete dir="${build}"/>
+     <delete dir="${dist}"/>
+     <delete dir="${WebInf}/classes"/>
+   </target>
+
+</project>
+
+<!-- This is the old build.xml for Assn1. -->
+<!-- Kept for reference sake.             -->
+<!--
+   <target name="compile_test" depends="compile_src">
+      <javac includeantruntime="false" srcdir="test_src" destdir = "test_classes" >
+         <classpath>
+             <pathelement path="classes"/>
+             <pathelement path=
+                 "/home/student/csci4300/Assert.jar "/>
+         </classpath>
+      </javac>
+   </target>
+
+
+   <target name="run_test1" depends="compile_test">
+      <java classname="TestList1">
+         <classpath>
+             <pathelement path="test_classes"/>
+             <pathelement path="classes"/>
+             <pathelement path=
+                 "/home/student/csci4300/Assert.jar "/>
+         </classpath>
+      </java>
+   </target>
+
+   <target name="run" depends="run_test1, run_test2, run_test3, run_test4">
+     <echo message="Tests complete"/>
+   </target>
+
+   <target name="jar">
+     <jar destfile="./GroceryList.jar" basedir="./classes">
+     </jar>
+   </target>
+   
+</project>
+
+-->
