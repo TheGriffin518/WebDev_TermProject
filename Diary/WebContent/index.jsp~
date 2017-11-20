@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Team Project Diary</title>
+    <style type="text/css">
+        .clickme {cursor: pointer}
+    </style>
+    <script type="text/javascript">
+        /**
+        * Print an alert saying the functionality has not
+        * been implemented in this version.
+        */
+        function workInProgress() {
+            alert("Sorry this functionality is not supported in this iteration");
+        }
+    </script>
+</head>
+<body>
+    <h1>Team Project Diary: Book Marketplace</h1>
+    <p><b>Project Description:</b> Create an application that allows students to buy and sell textbooks. 
+        Other students can buy and sell their textbooks to students directly and not have a middleman cut
+        into their profits.</p>
+    <p><b>Project Team Members: </b>Brandy Barber, Mark Baston, Tiffany Tong, and James Griffin</p>
+    <%@page import="java.sql.*"%>
+        <%
+           try {
+                Class.forName("org.mariadb.jdbc.Driver");
+                String url="jdbc:mariadb://localhost:/diary";
+                String username="dude";
+                String password="test";
+                String query="SELECT * FROM diary_entry";
+           Connection conn=DriverManager.getConnection("jdbc:mariadb://localhost:3306/diary?user=root");
+                Statement stmt=conn.createStatement();
+                ResultSet rs=stmt.executeQuery(query);
+
+           while((rs!=null) && (rs.next())) {%>
+	<table>
+	  <tr>
+    	    <td><%=rs.getDate("post_date")%></td>
+	    <td><%=rs.getString("author")%></td>
+            <td><%=rs.getString("title")%></td>
+	    <td><%=rs.getString("entry")%></td>
+	  </tr>
+	<%}//while
+	   rs.close();
+	   stmt.close();
+	   conn.close();
+	   } catch(Exception e) {
+	   %>workInProgress()<%
+	   e.printStackTrace();
+	   }%>
+
+                
+    <h3>Post a diary entry</h3>
+    <form action="DiaryEntryServlet" method="post">
+        <table>
+            <tr><td style="vertical-align:top">Team member: <select name="author">
+                <option value="brandy">Brandy Barber</option> 
+                <option value="mark">Mark Baston</option> 
+                <option value="tiffany">Tiffany Tong</option> 
+                <option value="james">James Griffin</option> 
+                </select></td></tr>
+            <tr><td><textarea name="postingContent" rows="10" cols="50"></textarea>
+                </td></tr>
+            <tr><td><input type="button" value="Post Message" classname="clickme"
+                           onclick="workInProgress()"/></td></tr>
+        </table>
+    </form>
+</body>
+</html>
