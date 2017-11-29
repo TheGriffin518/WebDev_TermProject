@@ -3,10 +3,11 @@
 <body>
 <h3>Trying to get database info from the vm.</h3>
 <?php
-$servername = 'localhost'; // change to your correct localhost port number
-$dbname = 'javatest'; // change to your database name
-$username = 'root'; // change to your username
+$servername = 'localhost:3306'; // change to your correct localhost port number
+$dbname = ''; // change to your database name
+$username = ''; // change to your username
 $password = ''; // change to your db password 
+
 //connection code
 $conn = mysqli_connect($servername, $username, $password,$dbname);
 if(mysqli_connect_errno())
