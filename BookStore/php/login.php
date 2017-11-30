@@ -29,7 +29,7 @@
       session_start();
       $_SESSION["loggedin"] = true;
       $_SESSION["username"] = $username;
-      header('Location: http://localhost:8888/main.php');
+      header('Location: http://localhost:8888/cart.php');
       exit();
    }     
    else {

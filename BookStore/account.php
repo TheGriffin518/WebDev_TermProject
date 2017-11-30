@@ -1,3 +1,13 @@
+<?php 
+   session_start();
+   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        $username = $_SESSION['username']; 
+   }
+   else {
+   	require_once('php/functions.php');
+	redirect('http://localhost:8888/loginError.html');
+   }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -80,7 +90,7 @@ input[type=search]{
 
 <h1 style="text-align:left"><a href="account.html" style="text-decoration: none">UGATextbookMarketplace </a></h1>
 <p></p>
-<p style="text-align:right;">Hello, username &nbsp &nbsp<a href="cart.html">Cart</a> &nbsp &nbsp<a href="main.html">History</a> &nbsp &nbsp<a href="main.html">Sign Out</a>&nbsp </p> 
+<p style="text-align:right;">Hello, <?php echo $username;?>&nbsp &nbsp<a href="cart.html">Cart</a> &nbsp &nbsp<a href="main.html">History</a> &nbsp &nbsp<a href="main.html">Sign Out</a>&nbsp </p> 
 <form>
 	<input type="search" id="search" placeholder="Search...">
 	<button onclick="bookSearch()" class="searchButton">Search</button>
