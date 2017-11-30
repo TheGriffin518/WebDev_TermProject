@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <title> UGATextbookMarketplace </title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -70,13 +70,13 @@ button{
 <h1><a href="main.html" style="text-decoration: none">UGATextbookMarketplace </a></h1>
 <p></p>
 
-	<form>
+	<form method="post" action="php/login.php">
 		<table>
 			<tr><td>Username: </td></tr>
-			<tr><td><input type="text" id="username" size="20"></td></tr>
+			<tr><td><input type="text" name="username" value="" size="20"></td></tr>
 			<tr><td> Password: </td></tr>
-			<tr><td><input type="text" id="password" size="20"></td></tr>
-			<tr><td style="padding:20px;"><button onclick="mLogin()"> LOGIN </button></tr>
+			<tr><td><input type="password" name="password" value="" size="20"></td></tr>
+			<tr><td style="padding:20px;"><input type="submit" value="LOGIN"></tr>
 		</table>
 	</form>
 

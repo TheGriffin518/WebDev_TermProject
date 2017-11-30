@@ -4,12 +4,12 @@
 <h3>Trying to get database info from the vm.</h3>
 <?php
 $servername = 'localhost:3306'; // change to your correct localhost port number
-$dbname = ''; // change to your database name
-$username = ''; // change to your username
-$password = ''; // change to your db password 
+$dbname = 'bookstore'; // change to your database name
+$username = 'root'; // change to your username
+$password = 'root'; // change to your db password 
 
 //connection code
-$conn = mysqli_connect($servername, $username, $password,$dbname);
+$conn = new mysqli($servername, $username, $password,$dbname);
 if(mysqli_connect_errno())
 {
    die("connection failed: " . mysqli_connect_error()
@@ -17,7 +17,7 @@ if(mysqli_connect_errno())
    . ")");
 }
 
-$query = "SELECT id, foo, bar from testdata;";
+$query = "SELECT * from accounts";
 $result = mysqli_query($conn, $query);
 $all_property = array();
 
