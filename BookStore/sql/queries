@@ -1,0 +1,4 @@
+### Useful SQL Queries ###
+
+- Return tuple where value within column is similar. 
+  SELECT * FROM {table} WHERE {column} LIKE '%{searchItem}%';
