@@ -15,7 +15,7 @@
    $username = stripslashes($username);
    $password = stripslashes($password);
 
-   $sql = "SELECT * FROM accounts WHERE user='" . $username ."' and password='" . $password ."'";
+   $sql = "SELECT * FROM accounts WHERE userid='" . $username ."' and password='" . $password ."'";
    //$sql = "SELECT * FROM accounts WHERE user='$username' AND password='$password'";
 
    if (!$result = $conn->query($sql)) {
@@ -29,7 +29,7 @@
       session_start();
       $_SESSION["loggedin"] = true;
       $_SESSION["username"] = $username;
-      header('Location: http://localhost:8888/cart.php');
+      header('Location: http://localhost:8888/php/account.php');
       exit();
    }     
    else {

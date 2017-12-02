@@ -40,6 +40,10 @@ table{
 
 }
 
+.cart, th, tr, td {
+    padding-right: 50px;
+}
+
 button{
 	background-color:#af0303;
 	border: none;

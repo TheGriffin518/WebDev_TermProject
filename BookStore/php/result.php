@@ -2,9 +2,10 @@
    session_start();
    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $username = $_SESSION['username']; 
+	echo "<h1>" . $username . "</h1>";
    }
    else {
-   	require_once('php/functions.php');
+   	require_once('functions.php');
 	redirect('http://localhost:8888/loginError.html');
    }
 
@@ -14,6 +15,10 @@
    }
    else {
    	$query = "SELECT * FROM inventory";
+	/*$query = "SELECT i.book 'book', i.price 'price', i.seller 'seller'
+   	  FROM cart c, inventory i 
+	  WHERE c.book = i.book AND c.userid = '" . $username "' 
+	  ORDER BY PRICE DESC";*/
    }
 
    $servername = 'localhost:3306'; // change to your correct localhost port number
@@ -35,7 +40,8 @@
    while ($row = $result->fetch_assoc()) {
    	 echo "<tr>";
    	 echo "<td>" . $row['book'] . "</td>" .
-	      "<td>" . $row['price'] . "</td>";
+	      "<td>" . $row['price'] . "</td>" .
+	      "<td>" . $row['seller'] . "</td>";
 	 echo "</tr>";
    }
    echo "</table>";
