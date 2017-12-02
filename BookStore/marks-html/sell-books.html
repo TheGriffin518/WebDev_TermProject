@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> UGATextbookMarketplace </title>
+    <link rel="stylesheet" href="textbook-marketplace.css">
+    <link href='https://fonts.googleapis.com/css?family=Amarante' rel='stylesheet'>
+  </head>
+  <body>
+    <div class = "header">
+      <!-- header and content -->
+      <a href="homepage.html"><h1 class="header-title">UGATextbookMarketplace</h1></a>
+      <a href=""><h3 class="header-element">Sell Book</h3></a>
+      <a href="cart-new.html"><h3 class="header-element">Cart</h3></a>
+      <a href="index.html"><h3 class="header-element" id="last-element">Logout</h3></a>
+    </div>
+
+    <h3 style="color:#af0303"> Sell Your Textbooks.<h3>
+    <table class="sell-books">
+  	   <tr>
+         <td>Enter Title</td>
+  			 <td></td><td>Price</td>
+       </tr>
+       <tr>
+  	     <td><input type="text" placeholder="Title"> </td>
+         <td>$</td>
+         <td><input type="text" placeholder="00.00" size="2"></td>
+       </tr>
+       <tr><td><button onclick="sellBook()"> Post Sale </button></td></tr>
+    </table>
+
+  </body>
+</html>
