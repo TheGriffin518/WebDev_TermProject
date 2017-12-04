@@ -3,11 +3,11 @@
 
    if (!empty($_POST)) {
         $search = $_POST['search'];
-        $query = "SELECT * FROM inventory WHERE book LIKE '%$search%' ORDER BY `inventory`.`price` ASC";
+        $query = "SELECT * FROM inventory WHERE book LIKE '%$search%' AND userid IS '' ORDER BY `inventory`.`price` ASC";
 
    }
    else {
-        $query = "SELECT * FROM `inventory` ORDER BY `inventory`.`book` ASC";
+        $query = "SELECT * FROM inventory WHERE userid IS NULL ORDER BY `inventory`.`book` ASC";
         /*$query = "SELECT i.book 'book', i.price 'price', i.seller 'seller'
           FROM cart c, inventory i 
           WHERE c.book = i.book AND c.userid = '" . $username "' 
@@ -44,11 +44,11 @@
 
 
     <div class = "flex">
- <div style="text-align:center"> 
+ <!--<div style="text-align:center">
 	<img class = "book-image" src="books.png"/>
-	<p></p>
+	<p></p>-->
 <?php 
-	echo "<table>";
+	/**echo "<table>";
 	echo "<tr><th> Title </th>";
       	echo "<th> Price </th>";
       	echo "<th> Seller </th></tr>";
@@ -61,9 +61,18 @@
          echo "</tr>";
    }
    echo "</table>";
+     **/
+    while ($row = $result->fetch_assoc()) {
+        echo "<div class = 'book'>";
+        echo "<h2 class = 'book-title'>" . $row['book'] . "</h2>";
+        echo "<img class = 'book-image' src='books.png'/>";
+        "<h3 class = 'book-price'>" . $row['price'] . "</h3>";
+        echo "<button><a href='addToCart.php?bookid=".$row['bookid']."'> Add to Cart</a></button>";
+        echo "</div>";
+    }
 ?>
-</div>
-	<p></p>
+<!--</div>
+	<p></p>-->
     </div>
   </body>
 </html>
