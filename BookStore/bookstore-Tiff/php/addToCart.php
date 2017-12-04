@@ -5,13 +5,17 @@
 	//echo $_GET['book'];
 	//echo $_GET['price'];	
 
-	$sql = "SELECT book, price, seller FROM inventory WHERE bookid=".$_GET['bookid']."";
+	$sql = "SELECT book, price, seller FROM inventory WHERE bookid=".$_GET['bookid']." AND userid IS NULL";
   
  if (!$result = $conn->query($sql)) {
       die("There was an error running the query [" . $conn->error . "]");
       echo "no user";
    }
-		
+
+	$sql1 = "UPDATE inventory SET userid='$username' WHERE bookid=".$_GET['bookid']." AND userid IS NULL";
+	if (!$conn->query($sql1)) {
+       		die("There was an error running the query [" . $conn->error . "]");
+ 	} 		
 	if ($result->num_rows > 0){
 	 	while($row = $result->fetch_assoc()){
 			$book = $row['book'];
