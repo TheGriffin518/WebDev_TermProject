@@ -66,7 +66,7 @@
         echo "<div class = 'book'>";
         echo "<h2 class = 'book-title'>" . $row['book'] . "</h2>";
         echo "<img class = 'book-image' src='books.png'/>";
-        "<h3 class = 'book-price'>" . $row['price'] . "</h3>";
+        echo "<h3 class = 'book-price'>$" . $row['price'] . "</h3>";
         echo "<button><a href='addToCart.php?bookid=".$row['bookid']."'> Add to Cart</a></button>";
         echo "</div>";
     }

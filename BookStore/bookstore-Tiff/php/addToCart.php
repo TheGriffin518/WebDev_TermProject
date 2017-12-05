@@ -1,9 +1,6 @@
 <?php
         include("session.php");
 
-	echo $_GET['bookid'];
-	//echo $_GET['book'];
-	//echo $_GET['price'];	
 
 	$sql = "SELECT book, price, seller FROM inventory WHERE bookid=".$_GET['bookid']." AND userid IS NULL";
   

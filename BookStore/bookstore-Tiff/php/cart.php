@@ -30,7 +30,8 @@
  <div style="text-align:center">
     <h3 style="color:#af0303"> Shopping Cart<h3>        
     <form action="checkout.php" method="post">
-<?php 
+<?php
+      $totalPrice = 0;	 
       echo "<table>";
       echo "<tr><th> Item </th>";
       echo "<th> Price </th>";
@@ -40,13 +41,22 @@
       	    echo "<tr>";
 	    echo "<td>" . $row['book'] . "</td>";
 	    echo "<td>" . $row['price'] . "</td>";
+	    $totalPrice += $row['price'];
 	    echo "<td>" . $row['seller'] . "</td>";
-	    echo "<td><input type='checkbox' name='removelist[]' value='". $row['book'] . "'></td>";
+	    echo "<td><button><a href='remove.php?bookid=".$row['bookid']."'> Remove</a></button></td>";
 	    echo "</tr>";
       }
+      /**echo "<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><button><a href='cartUpdate.php?bookid=".$row['bookid']."'> cartUpdate</a></button></td>
+            </tr>";**/
       echo "</table>";
 ?>
-	<input type="submit" name="submit" value="Update">
+	<p> Total: $<?php echo $totalPrice ?> </p>
+	<!--<button><a href='cartUpdate.php?bookid=".$row['bookid']."'>Checkout</a></button>-->
+	<input type="submit" name="checkout" value="Checkout">
     </form>
     </div>
   </div>
