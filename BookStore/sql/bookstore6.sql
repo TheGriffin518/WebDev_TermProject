@@ -50,7 +50,7 @@ CREATE TABLE `cart` (
   `userid` varchar(100) DEFAULT NULL,
   `book` varchar(100) DEFAULT NULL,
   `price` double(100,2) DEFAULT NULL,
-  `bookid` int(40) NOT NULL DEFAULT '0',
+  `bookid` int(40) NOT NULL,
   `seller` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
