@@ -74,9 +74,10 @@ DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
   `book` varchar(250) NOT NULL DEFAULT '',
   `price` double(40,2) DEFAULT NULL,
-  `bookid` int(40) NOT NULL DEFAULT '0',
+  `bookid` int(40) NOT NULL,
   `userid` varchar(255) DEFAULT NULL,
-  `seller` varchar(255) NOT NULL
+  `seller` varchar(255) NOT NULL, 
+  UNIQUE(bookid)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
